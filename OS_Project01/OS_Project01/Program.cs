@@ -1,15 +1,13 @@
 ﻿using System;
 
-//True에 count 추가
-
 namespace OS_Project01
 {
     class MainClass
     {
         static void Main(string[] args)
         {
-            char[] tasks = { 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G' };
-            //char[] tasks = { 'A', 'A', 'A', 'B', 'B', 'B' };
+            //char[] tasks = { 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G' };
+            char[] tasks = { 'A', 'A', 'A', 'B', 'B', 'B' };
             int n = 2;
 
             Solution solution = new Solution();
@@ -38,6 +36,7 @@ namespace OS_Project01
             index++;
             total++;
             tasks[0] = '9';
+            nine_count++;
 
             while (true)
             {
@@ -60,6 +59,7 @@ namespace OS_Project01
                     {
                         queue[index] = tasks[j];
                         tasks[j] = '9';
+                        nine_count++;
                         break;
                     }
                 }
@@ -93,30 +93,17 @@ namespace OS_Project01
                     }
                 }
                 
-                
-
-                for (int i = 0; i < tasks.Length; i++)
-                {
-                    if(tasks[i] == '9')
-                    {
-                        nine_count++;
-                    }
-                }
-
-                if(nine_count == tasks.Length)
+                if(nine_count >= tasks.Length)
                 {
                     for(int i = 0; i < index + 1; i++)
                     {
                         Console.Write(queue[i] + " ");
                     }
                     Console.WriteLine();
-                    //return index;
                     return total;
                 }
 
                 Console.WriteLine(index);
-                nine_count = 0;
-                
             }
         }
 
